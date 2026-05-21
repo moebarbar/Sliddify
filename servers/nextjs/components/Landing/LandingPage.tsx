@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { getApiUrl } from "@/utils/api";
 import { toast } from "sonner";
+import TemplateShowcase from "./TemplateShowcase";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
@@ -56,9 +57,10 @@ export default function LandingPage() {
           <img src="/sliddify-logo.svg" alt="Sliddify" className="h-8 w-auto" />
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium">
-          <a href="#how" className="text-slate-700 hover:text-slate-900 hidden sm:block">How it works</a>
-          <a href="#features" className="text-slate-700 hover:text-slate-900 hidden sm:block">Features</a>
-          <a href="#faq" className="text-slate-700 hover:text-slate-900 hidden sm:block">FAQ</a>
+          <a href="#how" className="text-slate-700 hover:text-slate-900 hidden md:block">How it works</a>
+          <a href="#templates" className="text-slate-700 hover:text-slate-900 hidden md:block">Templates</a>
+          <a href="#features" className="text-slate-700 hover:text-slate-900 hidden md:block">Features</a>
+          <a href="#faq" className="text-slate-700 hover:text-slate-900 hidden md:block">FAQ</a>
           <Link
             href="/app"
             className="rounded-full bg-slate-900 text-white px-4 py-2 hover:bg-slate-800 transition"
@@ -204,6 +206,9 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
+
+      {/* Templates showcase */}
+      <TemplateShowcase />
 
       {/* Built for */}
       <section className="relative z-10 max-w-6xl mx-auto px-6 py-20">
