@@ -19,6 +19,7 @@ from models.sql.presentation import PresentationModel
 from models.sql.template import TemplateModel
 from models.sql.template_create_info import TemplateCreateInfoModel
 from models.sql.slide import SlideModel
+from models.sql.waitlist_entry import WaitlistEntry  # noqa: F401
 from models.sql.webhook_subscription import WebhookSubscription
 from utils.get_env import get_migrate_database_on_startup_env
 from utils.db_utils import get_database_url_and_connect_args, get_pool_kwargs

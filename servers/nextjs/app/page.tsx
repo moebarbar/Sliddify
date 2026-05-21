@@ -1,7 +1,7 @@
-import AuthGate from "@/components/Auth/AuthGate";
+import LandingPage from "@/components/Landing/LandingPage";
 
-const page = () => {
-    return <AuthGate />;
+const Page = () => {
+    return <LandingPage />;
 };
 
-export default page;
+export default Page;
