@@ -191,12 +191,12 @@ export default function LandingPage() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { e: "🎨", t: "Bring your own templates", b: "Custom HTML + Tailwind layouts. Brand it once, never touch it again." },
-            { e: "🧠", t: "Multiple AI models", b: "Claude, GPT, Gemini, or run it locally with Ollama. Your call, your bill." },
+            { e: "🎨", t: "Custom templates", b: "Built-in layouts plus your own brand templates. Set them up once, never touch design again." },
+            { e: "🧠", t: "Multiple AI models", b: "Claude, GPT, Gemini, or run it locally. Pick the model, you pay the bill." },
             { e: "📎", t: "Upload your sources", b: "PDFs, CSVs, Word docs. Sliddify reads them so you don't have to summarize." },
             { e: "📤", t: "Real .pptx exports", b: "Editable in PowerPoint, Keynote, Google Slides. Not screenshots. Not images." },
             { e: "🔌", t: "API + MCP server", b: "Plug it into n8n, Zapier, your CRM, or any AI agent. Decks on demand." },
-            { e: "📖", t: "Open source", b: "Apache 2.0. Self-host it, fork it, audit it. Your data stays yours." },
+            { e: "🔒", t: "Your data, your control", b: "Generated decks live on your account. We don't train on your content, ever." },
           ].map((f, i) => (
             <div key={i} className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/80 shadow-sm hover:shadow-md transition-shadow">
               <div className="text-3xl mb-3">{f.e}</div>
@@ -246,8 +246,8 @@ export default function LandingPage() {
               a: "During the beta, yes. After launch there'll be a free tier and a paid plan for power users. Waitlist members get founder pricing locked in.",
             },
             {
-              q: "Do you own my decks?",
-              a: "No. Sliddify is open source (Apache 2.0). Self-host it and your data never leaves your machine. Use our hosted version and we still don't train on your content.",
+              q: "Who owns the decks I create?",
+              a: "You do. Every presentation lives on your account. We don't share, resell, or train on your content.",
             },
             {
               q: "Can I use my own ChatGPT / Claude key?",
@@ -313,7 +313,8 @@ export default function LandingPage() {
           </div>
           <div className="flex items-center gap-6">
             <Link href="/app" className="hover:text-slate-900">Sign in</Link>
-            <a href="https://github.com/moebarbar/Sliddify" target="_blank" rel="noreferrer" className="hover:text-slate-900">GitHub</a>
+            <a href="#how" className="hover:text-slate-900">How it works</a>
+            <a href="#templates" className="hover:text-slate-900">Templates</a>
           </div>
         </div>
       </footer>
