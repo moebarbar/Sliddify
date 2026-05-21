@@ -1,0 +1,49 @@
+.env
+.env.*
+*.env
+.venv
+__pycache__
+.pytest_cache
+.next
+node_modules
+out
+user_data
+app_data
+tmp
+debug
+.fastembed_cache
+
+generated_models
+nltk
+chroma
+container.db
+.next-build
+.cursor
+.agents
+skills-lock.json
+.codex/
+
+# presentation-export runtime (downloaded via scripts/sync-presentation-export.cjs or Docker build)
+presentation-export/index.js
+presentation-export/index.cjs
+presentation-export/py/
+.cache/presentation-export/
+servers/fastapi/build/
+servers/fastapi/dist/
+servers/fastapi/fastembed_cache/
+servers/fastapi/*.egg-info/
+.codex/
+
+# Electron bundled export runtime (rebuilt via npm run setup:export-runtime; not needed for web/Docker)
+electron/resources/export/
+electron/app_dist/
+electron/dist/
+
+# OS / IDE
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# Claude/agent local state
+.claude/
