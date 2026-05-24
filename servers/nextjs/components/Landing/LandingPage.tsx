@@ -60,6 +60,7 @@ export default function LandingPage() {
           <a href="#how" className="text-slate-700 hover:text-slate-900 hidden md:block">How it works</a>
           <a href="#templates" className="text-slate-700 hover:text-slate-900 hidden md:block">Templates</a>
           <a href="#features" className="text-slate-700 hover:text-slate-900 hidden md:block">Features</a>
+          <Link href="/pricing" className="text-slate-700 hover:text-slate-900 hidden md:block">Pricing</Link>
           <a href="#faq" className="text-slate-700 hover:text-slate-900 hidden md:block">FAQ</a>
           <Link
             href="/app"
@@ -312,8 +313,8 @@ export default function LandingPage() {
             <span>© {new Date().getFullYear()} Sliddify</span>
           </div>
           <div className="flex items-center gap-6">
+            <Link href="/pricing" className="hover:text-slate-900">Pricing</Link>
             <Link href="/app" className="hover:text-slate-900">Sign in</Link>
-            <a href="#how" className="hover:text-slate-900">How it works</a>
             <a href="#templates" className="hover:text-slate-900">Templates</a>
           </div>
         </div>
