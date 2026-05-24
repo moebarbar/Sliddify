@@ -21,6 +21,7 @@ from services.documents_loader import DocumentsLoader
 from services.mem0_presentation_memory_service import (
     MEM0_PRESENTATION_MEMORY_SERVICE,
 )
+from services.web_fetch_service import enrich_context_with_urls
 from utils.llm_utils import message_content_to_text
 from utils.outline_utils import (
     get_no_of_outlines_to_generate_for_n_slides,
@@ -60,6 +61,19 @@ async def stream_outlines(
             documents = documents_loader.documents
             if documents:
                 additional_context = "\n\n".join(documents)
+
+        # Auto-fetch any URLs/domains mentioned in the user content (e.g. "deck about
+        # acme.com") and append their text so the LLM grounds in real source material.
+        fetched_text, fetched_urls = await enrich_context_with_urls(presentation.content)
+        if fetched_text:
+            yield SSEStatusResponse(
+                status=f"Reading {len(fetched_urls)} source page{'s' if len(fetched_urls) != 1 else ''}..."
+            ).to_string()
+            additional_context = (
+                f"{additional_context}\n\n{fetched_text}".strip()
+                if additional_context
+                else fetched_text
+            )
 
         presentation_outlines_text = ""
 
