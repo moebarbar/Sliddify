@@ -1,6 +1,6 @@
 import asyncio
 import uuid
-from unittest.mock import AsyncMock, Mock, patch
+from unittest.mock import AsyncMock, MagicMock, Mock, patch
 
 import pytest
 from fastapi import HTTPException
@@ -179,6 +179,7 @@ def test_generate_presentation_sync_rejects_invalid_slide_count(fake_async_sessi
     with pytest.raises(HTTPException) as exc:
         _run(
             presentation_endpoint.generate_presentation_sync(
+                request_http=MagicMock(),
                 request=request,
                 sql_session=fake_async_session,
             )

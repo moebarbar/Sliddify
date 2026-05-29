@@ -158,6 +158,7 @@ class LiteParseService:
                     cwd,
                     "..",
                     "..",
+                    "electron",
                     "resources",
                     "document-extraction",
                     "liteparse_runner.mjs",

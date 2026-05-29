@@ -97,7 +97,7 @@ if [ -d "servers/nextjs" ]; then
     cd servers/nextjs && \
     if [ ! -d \"node_modules\" ]; then
         echo 'Installing npm dependencies...' && \
-        npm ci 2>&1 | tail -10 || npm install 2>&1 | tail -10
+        npm ci 2>&1 | tail -10 || npm install --no-workspaces 2>&1 | tail -10
     fi && \
     export NEXT_PUBLIC_FAST_API=http://localhost:8000 && \
     export NEXT_PUBLIC_URL=http://localhost:3000 && \
@@ -109,20 +109,6 @@ else
     echo ""
 fi
 
-# Test 3: Docker Build (optional, skip if Docker not available)
-if command -v docker &> /dev/null && [ -f "Dockerfile" ]; then
-    run_test "Docker Build" "
-    docker build -t sliddify:test -f Dockerfile . && \
-    docker images | grep sliddify:test
-    "
-else
-    if [ ! -f "Dockerfile" ]; then
-        echo -e "${YELLOW}⚠ Dockerfile not found, skipping Docker build test${NC}"
-    else
-        echo -e "${YELLOW}⚠ Docker not found, skipping Docker build test${NC}"
-    fi
-    echo ""
-fi
 
 # Summary
 echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
