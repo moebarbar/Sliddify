@@ -68,6 +68,7 @@ class TestMem0PresentationMemoryService:
             "os.environ",
             {
                 "MEM0_ENABLED": "true",
+                "MEM0_REQUIRE_SPACY_MODEL": "false",
                 "APP_DATA_DIRECTORY": "/tmp/sliddify-test",
                 "OLLAMA_URL": "http://ollama:11434",
                 "OLLAMA_MODEL": "llama3.1:8b",

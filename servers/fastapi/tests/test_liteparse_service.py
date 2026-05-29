@@ -29,12 +29,13 @@ class TestLiteParseService:
             "services.liteparse_service.subprocess.run",
             return_value=_ok_process(),
         ) as mock_run:
-            service = LiteParseService(timeout_seconds=30)
-            r = service.parse("/tmp/sample.pdf", ocr_enabled=True, ocr_language="eng")
+            with patch.object(LiteParseService, "_run_plain_bridge_to_text", return_value=_ok_process()) as mock_plain_run:
+                service = LiteParseService(timeout_seconds=30)
+                r = service.parse("/tmp/sample.pdf", ocr_enabled=True, ocr_language="eng")
             assert r["ok"] is True
             assert r["text"] == "ok"
 
-        command = mock_run.call_args.args[0]
+        command = mock_plain_run.call_args.args[0]
         assert "--dpi" in command
         assert command[command.index("--dpi") + 1] == "120"
         assert "--num-workers" in command
@@ -57,10 +58,11 @@ class TestLiteParseService:
             "services.liteparse_service.subprocess.run",
             return_value=_ok_process(),
         ) as mock_run:
-            service = LiteParseService(timeout_seconds=30)
-            service.parse("/tmp/sample.pdf", ocr_enabled=True, ocr_language="eng")
+            with patch.object(LiteParseService, "_run_plain_bridge_to_text", return_value=_ok_process()) as mock_plain_run:
+                service = LiteParseService(timeout_seconds=30)
+                service.parse("/tmp/sample.pdf", ocr_enabled=True, ocr_language="eng")
 
-        command = mock_run.call_args.args[0]
+        command = mock_plain_run.call_args.args[0]
         assert command[command.index("--dpi") + 1] == "96"
         assert command[command.index("--num-workers") + 1] == "2"
 
@@ -80,10 +82,11 @@ class TestLiteParseService:
             "services.liteparse_service.subprocess.run",
             return_value=_ok_process(),
         ) as mock_run:
-            service = LiteParseService(timeout_seconds=30)
-            service.parse("/tmp/sample.pdf", ocr_enabled=True, ocr_language="eng")
+            with patch.object(LiteParseService, "_run_plain_bridge_to_text", return_value=_ok_process()) as mock_plain_run:
+                service = LiteParseService(timeout_seconds=30)
+                service.parse("/tmp/sample.pdf", ocr_enabled=True, ocr_language="eng")
 
-        command = mock_run.call_args.args[0]
+        command = mock_plain_run.call_args.args[0]
         assert command[command.index("--dpi") + 1] == "72"
         assert command[command.index("--num-workers") + 1] == "1"
 

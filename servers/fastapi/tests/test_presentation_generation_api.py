@@ -1,6 +1,6 @@
 import asyncio
 import uuid
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 from fastapi import HTTPException
@@ -45,7 +45,7 @@ class TestPresentationGenerationAPI:
             new=AsyncMock(return_value=response_payload),
         ) as mock_handler:
             response = asyncio.run(
-                generate_presentation_sync(request, sql_session=FakeAsyncSession())
+                generate_presentation_sync(request_http=MagicMock(), request=request, sql_session=FakeAsyncSession())
             )
 
         assert response == response_payload
@@ -70,7 +70,7 @@ class TestPresentationGenerationAPI:
             new=AsyncMock(return_value=response_payload),
         ) as mock_handler:
             response = asyncio.run(
-                generate_presentation_sync(request, sql_session=FakeAsyncSession())
+                generate_presentation_sync(request_http=MagicMock(), request=request, sql_session=FakeAsyncSession())
             )
 
         assert response == response_payload
@@ -98,7 +98,7 @@ class TestPresentationGenerationAPI:
 
         with pytest.raises(HTTPException) as exc:
             asyncio.run(
-                generate_presentation_sync(request, sql_session=FakeAsyncSession())
+                generate_presentation_sync(request_http=MagicMock(), request=request, sql_session=FakeAsyncSession())
             )
 
         assert exc.value.status_code == 400
